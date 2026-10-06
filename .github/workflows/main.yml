@@ -6,28 +6,42 @@ on:
       - main
 
 jobs:
-  extract-job:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Run Python code
-        run: python extract.py
+        run: echo "job1"
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: echo "job2"
+  job3:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: echo "job3"
+  job4:
+    needs: job2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: echo "job4"
+  job5:
+    needs: job3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: echo "job5"
+  job6:
+    needs: job4, job5
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        run: echo "job6"
 
-  transform-job:
-    needs: extract-job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Run Python code
-        run: python transform.py
+    
 
-  load-job:
-    needs: transform-job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Run Python code
-        run: python load.py
+ 
