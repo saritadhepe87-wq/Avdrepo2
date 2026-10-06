@@ -10,8 +10,13 @@ jobs:
 
 
     steps:
-      - name: checkout code
-        uses: actions/checkout@v7
+      - name: checkout code 
+      - name: print python version
+      - run: python --version
+      - name: set up python version 
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
 
       - name: print python version
         run: python --version
