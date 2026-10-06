@@ -3,23 +3,23 @@ name: pipeline1
 on:
   push:
     branches:
-        - main
+      - main
+
 jobs:
   run-python-code:
     runs-on: ubuntu-latest
 
-
     steps:
-      - name: checkout code 
-      - name: print python version
-      - run: python --version
-      - name: set up python version 
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
         uses: actions/setup-python@v7
         with:
           python-version: '3.13'
 
-      - name: print python version
+      - name: Print Python version
         run: python --version
 
-      - name: run python program
+      - name: Run Python program
         run: python welcome.py
