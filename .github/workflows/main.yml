@@ -2,29 +2,30 @@ name: ETL Pipeline
 
 on:
   push:
-     branches:
-        -main
+    branches:
+      - main
 
 jobs:
-   extract-job:
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout code
-          uses: actions/checkout@v7
-        - name: run python code
-          run: python extract.py
-   transform-job:
-      
-       runs-on: ubuntu-latest
-       steps:
-        - name: checkout code
-          uses: actions/checkout@v7
-        - name: run python code
-          run: python transform.py
-   load-job:
-      runs-on: ubuntu-latest
-       steps:
-        - name: checkout code
-          uses: actions/checkout@v7
-        - name: run python code
-          run: python load.py
+  extract-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Python code
+        run: python extract.py
+
+  transform-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Python code
+        run: python transform.py
+
+  load-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run Python code
+        run: python load.py
