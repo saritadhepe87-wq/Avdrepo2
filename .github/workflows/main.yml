@@ -9,39 +9,40 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Run job1
         run: echo "job1"
+
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Run job2
         run: echo "job2"
+
   job3:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Run job3
         run: echo "job3"
+
   job4:
     needs: job2
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Run job4
         run: echo "job4"
+
   job5:
     needs: job3
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Run job5
         run: echo "job5"
+
   job6:
-    needs: job4, job5
+    needs: [job4, job5]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Run job6
         run: echo "job6"
-
-    
-
- 
